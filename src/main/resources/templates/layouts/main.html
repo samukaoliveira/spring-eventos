@@ -19,13 +19,14 @@
     <div th:fragment="${content}"></div>
 </main>
 <footer>
-    <!-- Conteúdo do rodapé -->
+    <div th:replace="footer :: footer"></div>
 </footer>
 <!-- Bootstrap JS e dependências (opcional) -->
-<script src="/js/bootstrap.min.js"></script>
+
 <!-- Scripts adicionais -->
 <th:block th:fragment="scripts">
-    <!-- Adicione JS específico aqui -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/temp_alert.js"></script>
 </th:block>
 </body>
 </html>

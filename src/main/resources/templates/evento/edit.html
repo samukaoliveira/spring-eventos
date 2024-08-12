@@ -8,29 +8,29 @@
 <th:block th:fragment="content">
 
     <h1 class="text-center">Cadastrar Evento</h1>
-
-    <form method="post"  action="/cadastrarEvento">
+    <form method="post"  action="/atualizarEvento">
+        <input type="hidden" name="_method" value="put"/>
+        <input type="hidden" name="id" th:value="${evento.id}" />
         <label>Nome:</label>
         <label>
-            <input type="text" value="" name="nome"/>
+            <input type="text" th:value="${evento.nome}" name="nome"/>
         </label>
         <label>Local de realização:</label>
         <label>
-            <input type="text" value="" name="local"/>
+            <input type="text" th:value="${evento.local}" name="local"/>
         </label>
         <label>Data:</label>
         <label>
-            <input type="date" value="" name="data"/>
+            <input type="date" th:value="${evento.data}" name="data"/>
         </label>
         <label>Horário:</label>
         <label>
-            <input type="time" value="" name="horario"/>
+            <input type="time" th:value="${evento.horario}" name="horario"/>
         </label>
 
         <button type="submit">Salvar</button>
     </form>
 </th:block>
-<th:block th:replace="layouts/main :: scripts"></th:block>
 </body>
 
 </html>

@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:replace="layouts/main :: title">Eventos</title>
+    <th:block th:replace="layouts/main :: styles"></th:block>
+</head>
+<body>
+<th:block th:replace="layouts/header :: header"></th:block>
+<th:block th:fragment="content">
+    <h1 class="text-center m-5">Eventos</h1>
+
+    <div class="container ml-5">
+        <a href="/cadastrarEvento" class="btn btn-primary">Cadastrar</a>
+    </div>
+
+    <table class="justify-content-center table-striped container table-bordered mt-3">
+        <tr class="bg-dark">
+            <th class="col-4 table-dark text-center">Nome</th>
+            <th class="col-3 table-dark text-center">Local</th>
+            <th class="col-2 table-dark text-center">Data</th>
+            <th class="col-2 table-dark text-center">Horário</th>
+        </tr>
+    <div th:each="evento : ${evento}">
+        <div class="row">
+            <tr>
+            <td class="col-2"><span th:text="${evento.nome}"></span></td>
+            <td class="col-2 text-center"><span th:text="${evento.local}"></span></td>
+            <td class="col-2 text-center"><span th:text="${evento.data}"></span></td>
+            <td class="col-2 text-center"><span th:text="${evento.horario}"></span></td>
+            </tr>
+        </div>
+    </div>
+    </table>
+</body>
+</html>

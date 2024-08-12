@@ -6,22 +6,26 @@
         <table class="col-11 justify-content-center bg-dark text-light p-2 rouded-5">
             <tr>
                 <td class="text-center">
-                    Home
+                    <a href="/">Home</a>
                 </td>
                 <td class="text-center">
-                    Eventos
+                    <a href="/eventos">Eventos</a>
                 </td>
                 <td class="text-center">
-                    Usuários
+                    <a href="/usuarios">Usuários</a>
                 </td>
                 <td class="text-center">
-                    Teste
+                    <a href="/">Teste</a>
                 </td>
                 <td class="text-center">
-                    Home
+                    <a href="/" class="text-decoration-none">Home</a>
                 </td>
             </tr>
         </table>
+        <div id="message" class="col-8 m-1 position-absolute top-25 start-25 bg-success">
+            <span th:if="${message}" class="card h-75 " role="alert" th:text="${message}"></span>
+        </div>
+
     </div>
 </th:block>
 </body>

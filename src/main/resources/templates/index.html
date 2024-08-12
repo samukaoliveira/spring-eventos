@@ -1,11 +1,11 @@
-<html>
-<body>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>
-        Index - Principal
-    </title>
+    <title th:replace="layouts/main :: title">Principal</title>
+    <th:block th:replace="layouts/main :: styles"></th:block>
 </head>
-</body>
+<body>
+<th:block th:replace="layouts/header :: header"></th:block>
+<th:block th:fragment="content">
 
-    <h1 class="text-warning">Home</h1>
+    <h1 class="text-center">Home</h1>
 </html>
