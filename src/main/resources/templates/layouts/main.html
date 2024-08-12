@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Título</title>
+    <th:block th:fragment="styles">
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <!-- Inclua aqui qualquer CSS adicional específico para a página -->
+    </th:block>
+</head>
+<body>
+<header>
+    <div th:replace="header :: header"></div>
+</header>
+<main>
+    <!-- Conteúdo principal da página -->
+    <div th:fragment="${content}"></div>
+</main>
+<footer>
+    <!-- Conteúdo do rodapé -->
+</footer>
+<!-- Bootstrap JS e dependências (opcional) -->
+<script src="/js/bootstrap.min.js"></script>
+<!-- Scripts adicionais -->
+<th:block th:fragment="scripts">
+    <!-- Adicione JS específico aqui -->
+</th:block>
+</body>
+</html>
