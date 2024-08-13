@@ -15,8 +15,10 @@
 <header>
     <div th:replace="layouts/header :: header"></div>
 </header>
-<main class="flex-fill">
-    <!-- Conteúdo principal da página -->
+<main class=" container flex-fill">
+    <div class="text-center m-5">
+        <h1 th:replace="${view} :: titulo">Home</h1>
+    </div>
     <div th:replace="${view} :: content"></div>
 </main>
 <footer>

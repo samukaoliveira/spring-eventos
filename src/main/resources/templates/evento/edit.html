@@ -1,13 +1,10 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title th:replace="layouts/main :: title">Cadastrar Evento</title>
-    <th:block th:replace="layouts/main :: styles"></th:block>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
 <body>
-<th:block th:replace="layouts/header :: header"></th:block>
-<th:block th:fragment="content">
+<h1 th:fragment="titulo">Editar Evento</h1>
+<div th:fragment="content">
 
-    <h1 class="text-center">Cadastrar Evento</h1>
     <form method="post"  action="/atualizarEvento">
         <input type="hidden" name="_method" value="put"/>
         <input type="hidden" name="id" th:value="${evento.id}" />
@@ -30,7 +27,7 @@
 
         <button type="submit">Salvar</button>
     </form>
-</th:block>
+</div>
 </body>
 
 </html>

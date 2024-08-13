@@ -1,12 +1,9 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title th:replace="layouts/main :: title">Eventos</title>
-    <th:block th:replace="layouts/main :: styles"></th:block>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
 <body>
-<th:block th:replace="layouts/header :: header"></th:block>
-<th:block th:fragment="content">
-    <h1 class="text-center m-5">Eventos</h1>
+<h1 th:fragment="titulo">Detalhes do Evento</h1>
+<div th:fragment="content">
 
     <div class="container ml-5">
         <a href="/cadastrarEvento" class="btn btn-primary">Cadastrar</a>
@@ -30,5 +27,16 @@
         </div>
     </div>
     </table>
+    <div class="row mt-3">
+        <table class="col-4 offset-4">
+            <tr>
+                <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#editarEvento').arg(0, evento.id)).build()}"><button class="btn btn-warning">Editar</button></a></td>
+                <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.id)).build()}" onclick="return confirm('Tem certeza que deseja deletar este evento?')">
+                    <button class="btn btn-danger">Excluir</button></a></td>
+                <td class="col-2 text-center"><button class="btn btn-secondary" onclick="window.history.back()">Voltar</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
