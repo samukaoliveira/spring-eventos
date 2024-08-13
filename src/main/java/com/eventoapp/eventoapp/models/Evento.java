@@ -1,11 +1,9 @@
 package com.eventoapp.eventoapp.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -22,14 +20,17 @@ public class Evento implements Serializable {
     @NotEmpty(message = "O nome é obrigatório")
     private String nome;
 
-    @NotEmpty(message = "O nome é obrigatório")
+    @NotEmpty(message = "O local é obrigatório")
     private String local;
 
-    @NotEmpty(message = "O nome é obrigatório")
+    @NotEmpty(message = "A data é obrigatório")
     private String data;
 
-    @NotEmpty(message = "O nome é obrigatório")
+    @NotEmpty(message = "O horário é obrigatório")
     private String horario;
+
+    @OneToMany
+    private List<Convidado> convidado;
 
     public Long getId() {
         return id;

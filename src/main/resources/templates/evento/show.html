@@ -5,9 +5,7 @@
 <h1 th:fragment="titulo">Detalhes do Evento</h1>
 <div th:fragment="content">
 
-    <div class="container ml-5">
-        <a href="/cadastrarEvento" class="btn btn-primary">Cadastrar</a>
-    </div>
+
 
     <table class="justify-content-center table-striped container table-bordered mt-3">
         <tr class="bg-dark">
@@ -36,6 +34,25 @@
                 <td class="col-2 text-center"><button class="btn btn-secondary" onclick="window.history.back()">Voltar</button></td>
             </tr>
         </table>
+    </div>
+    <div id="row convidados">
+        <form method="post">
+            <input type="text" value="" name="nomeConvidado">
+            <input type="text" value="" name="rg">
+            <button type="submit" class="btn btn-success">Adicionar convidado</button>
+        </form>
+    </div>
+    <div th:each="convidado : ${evento.convidados}" class="row">
+
+
+        <div class="row">
+            <table class="ustify-content-center table-striped container table-bordered mt-3">
+                <tr>
+                    <td class="col-2"><span th:text="${convidado.nomeConvidado}"></span></td>
+                    <td class="col-2 text-center"><span th:text="${convidado.rg}"></span></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 </body>

@@ -77,6 +77,11 @@
 			<version>6.2.2.Final</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
 		<!-- Dependência necessária para a integração com o Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
