@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,16 @@
         <!-- Inclua aqui qualquer CSS adicional específico para a página -->
     </th:block>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <header>
-    <div th:replace="header :: header"></div>
+    <div th:replace="layouts/header :: header"></div>
 </header>
-<main>
+<main class="flex-fill">
     <!-- Conteúdo principal da página -->
-    <div th:fragment="${content}"></div>
+    <div th:replace="${view} :: content"></div>
 </main>
 <footer>
-    <div th:replace="footer :: footer"></div>
+    <div th:replace="layouts/footer :: footer"></div>
 </footer>
 <!-- Bootstrap JS e dependências (opcional) -->
 

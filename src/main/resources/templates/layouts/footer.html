@@ -1,14 +1,14 @@
 
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <body>
-<th:block th:fragment="footer">
-    <div class="row justify-content-center m-6">
-        <span>
-            <p>&rightarrow; Eventos</p>
+    <div th:fragment="footer" class="col-4 offset-4 row justify-content-center d-flex flex-column mt-auto">
+        <span class="d-flex justify-content-center">
+            <p>Treinamento de JAVA - Samuel Oliveira</p>
         </span>
-        <p>Teste</p>
+        <span class="d-flex justify-content-center">
+            <img th:src="@{/images/logo-sti.png}" alt="Logo">
+        </span>
 
     </div>
-</th:block>
 </body>
 </html>

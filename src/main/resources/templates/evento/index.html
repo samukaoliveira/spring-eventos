@@ -1,15 +1,12 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <title th:replace="layouts/main :: title">Eventos</title>
-    <th:block th:replace="layouts/main :: styles"></th:block>
-</head>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
 <body>
-<th:block th:replace="layouts/header :: header"></th:block>
-<th:block th:fragment="content">
+<div th:fragment="content">
     <h1 class="text-center m-5">Eventos</h1>
 
     <div class="container ml-5">
-        <a href="/cadastrarEvento" class="btn btn-primary">Cadastrar</a>
+        <a href="/cadastrarEvento" class="btn btn-primary opacity-75">Cadastrar</a>
     </div>
 
     <table class="justify-content-center table-striped container table-bordered mt-3">
@@ -20,9 +17,7 @@
             <th class="col-2 table-dark text-center">Horário</th>
             <th colspan="3" class="col-2 table-dark text-center">Ações</th>
         </tr>
-    <div th:each="evento : ${eventos}">
-        <div class="row">
-            <tr>
+    <tr th:each="evento : ${eventos}">
             <td class="col-2"><span th:text="${evento.nome}"></span></td>
             <td class="col-2 text-center"><span th:text="${evento.local}"></span></td>
             <td class="col-2 text-center"><span th:text="${evento.data}"></span></td>
@@ -30,12 +25,11 @@
             <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}"><span>Mostrar</span></a></td>
             <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#editarEvento').arg(0, evento.id)).build()}"><span>Editar</span></a></td>
             <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.id)).build()}" onclick="return confirm('Tem certeza que deseja deletar este evento?')">
-                <span>Excluir</span></a></td></tr>
-        </div>
-    </div>
+                <span>Excluir</span></a></td>
+    </tr>
     </table>
 
-    <th:block th:replace="layouts/main :: scripts"></th:block>
+    <div th:replace="layouts/main :: scripts"></div>
 </body>
 
 </html>
