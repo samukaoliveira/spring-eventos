@@ -22,8 +22,11 @@
                 </td>
             </tr>
         </table>
-        <div id="message" class="col-8 m-1 position-absolute top-25 start-25 bg-success">
-            <span th:if="${message}" class="card h-75 " role="alert" th:text="${message}"></span>
+        <div id="message" class="col-5 m-1 position-absolute top-25 start-25 mt-4">
+            <div class="card h-75 text-light text-center opacity-75">
+                <span th:if="${message}" class="bg-success" role="alert" th:text="${message}"></span>
+                <span th:if="${alert}" class="bg-danger" role="alert" th:text="${alert}"></span>
+            </div>
         </div>
 
     </div>

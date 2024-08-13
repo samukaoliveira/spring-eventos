@@ -63,7 +63,7 @@ public class EventoController {
     public String deletarEvento(long id, RedirectAttributes redirectAttributes){
         Evento evento = er.findById(id);
         er.delete(evento);
-        redirectAttributes.addFlashAttribute("message", "Evento deletado com sucesso!");
+        redirectAttributes.addFlashAttribute("alert", "Evento deletado com sucesso!");
         return "redirect:/eventos";
     }
 
