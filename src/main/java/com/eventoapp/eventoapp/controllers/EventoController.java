@@ -86,14 +86,22 @@ public class EventoController {
     }
 
     @RequestMapping("/deletarConvidado")
-    public String deletarConvidado(Long rg){
-        Convidado convidado = cr.findByRg(rg);
+    public String deletarConvidado(Long id){
+        Convidado convidado = cr.findById(id);
         Evento evento = convidado.getEvento();
         Long eventoId = evento.getId();
         String codigo = "" + eventoId;
         cr.delete(convidado);
+        return "redirect:/" + codigo;
+    }
 
-        return "redirect:/{codigo}";
+    @RequestMapping(value="/editaConvidado", method= RequestMethod.POST)
+    public String editaConvidado(@ModelAttribute Convidado convidado){
+        cr.save(convidado);
+        Evento evento = convidado.getEvento();
+        Long evId = evento.getId();
+        String codigo = "" + evId;
+        return  "redirect:/" + codigo;
     }
 
 }

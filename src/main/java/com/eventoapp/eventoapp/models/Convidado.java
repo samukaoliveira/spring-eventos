@@ -12,6 +12,18 @@ public class Convidado {
     private String nomeConvidado;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @NotEmpty(message = "O RG é obrigatório")
     private Long rg;
 
     @ManyToOne
@@ -38,12 +50,12 @@ public class Convidado {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Convidado convidado = (Convidado) o;
-        return Objects.equals(nomeConvidado, convidado.nomeConvidado) && Objects.equals(rg, convidado.rg);
+        return Objects.equals(nomeConvidado, convidado.nomeConvidado) && Objects.equals(id, convidado.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nomeConvidado, rg);
+        return Objects.hash(nomeConvidado, rg, id);
     }
 
     public Evento getEvento() {

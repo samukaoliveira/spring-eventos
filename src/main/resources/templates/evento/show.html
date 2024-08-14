@@ -59,13 +59,48 @@
             <tr>
                 <td class="col-4"><span th:text="${convidado.nomeConvidado}"></span></td>
                 <td class="col-2 text-center"><span th:text="${convidado.rg}"></span></td>
-<!--                <td class="col-2 text-center"><a th:href="@{/editConvidado/{eventoId}/{convidadoRg}(eventoId=${evento.id}, convidadoRg=${convidado.rg})}"><span>Editar</span></a></td>-->
-                <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}" onclick="return confirm('Tem certeza que deseja deletar este evento?')">
+                <td class="col-2 text-center"><button class="btn btn-warning"
+                        data-bs-toggle="modal"
+                        th:data-bs-target="'#modalEditaConvidado-' + ${convidado.id}">
+                    Editar
+                </button></td>
+                <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.id)).build()}" onclick="return confirm('Tem certeza que deseja deletar este convidado?')">
                     <span>Excluir</span></a></td>
             </tr>
+            <div class="modal fade" th:id="'modalEditaConvidado-' + ${convidado.id}"  tabindex="-1" aria-labelledby="modalEditaConvidadoLable" aria-hidden="true">
+
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditaConvidadoLabel">Editar Convidado</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formEditaConvidado" method="post" class="modal-body col-8 offset-2">
+                                <div>
+                                    <label class="col-6 form-label">Nome do convidado:</label>
+                                    <label class="col-3 form-label">RG:</label>
+                                </div>
+                                <div>
+                                    <input type="text" th:value="${convidado.nomeConvidado}" name="nomeConvidado" class="col-7 form-input">
+                                    <input type="text" th:value="${convidado.rg}" name="rg" class="col-3 form-input">
+                                    <input type="hidden" name="evento.id" th:value="${convidado.evento.id}" />
+                                    <input type="hidden" name="id" th:value="${convidado.id}">
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </table>
-</div>
+
 </div>
 </body>
 </html>
