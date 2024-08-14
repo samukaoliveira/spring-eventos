@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover {
+    text-decoration: none;
+    color: #E6E6FA;
+}
+
+.menu p {
+    font-size: 16px;
+}
