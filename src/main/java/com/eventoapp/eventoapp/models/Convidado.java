@@ -12,7 +12,6 @@ public class Convidado {
     private String nomeConvidado;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rg;
 
     @ManyToOne

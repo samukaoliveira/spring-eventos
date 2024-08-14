@@ -6,12 +6,10 @@ import com.eventoapp.eventoapp.repository.ConvidadoRepository;
 import com.eventoapp.eventoapp.repository.EventoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 public class EventoController {
@@ -35,32 +33,39 @@ public class EventoController {
 
     @RequestMapping(value="/eventos")
     public ModelAndView listaEventos(){
-        ModelAndView mv = new ModelAndView("/evento/index");
+        ModelAndView mv = new ModelAndView("evento/index");
         Iterable<Evento> eventos = er.findAll();
         mv.addObject("eventos", eventos);
         return mv;
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView detalhesEvento(@PathVariable("id") long id){
         Evento evento = er.findById(id);
-        ModelAndView mv = new ModelAndView("/evento/show");
+        ModelAndView mv = new ModelAndView("evento/show");
         mv.addObject("evento", evento);
+
+        Iterable<Convidado> convidados = cr.findByEvento(evento);
+        mv.addObject("convidados", convidados);
         return mv;
     }
 
+
+
+
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public String detalhesEvento(@PathVariable("id") long id, Convidado convidado){
+    public String cadastraConvidado(@PathVariable("id") long id, Convidado convidado){
         Evento evento = er.findById(id);
         convidado.setEvento(evento);
         cr.save(convidado);
         return "redirect:/{id}";
     }
 
+
     @RequestMapping("/edit/{id}")
     public ModelAndView editarEvento(@PathVariable("id") long id){
         Evento evento = er.findById(id);
-        ModelAndView mv = new ModelAndView("/evento/edit");
+        ModelAndView mv = new ModelAndView("evento/edit");
         mv.addObject("evento", evento);
         return mv;
     }
@@ -78,6 +83,17 @@ public class EventoController {
         er.delete(evento);
         redirectAttributes.addFlashAttribute("alert", "Evento deletado com sucesso!");
         return "redirect:/eventos";
+    }
+
+    @RequestMapping("/deletarConvidado")
+    public String deletarConvidado(Long rg){
+        Convidado convidado = cr.findByRg(rg);
+        Evento evento = convidado.getEvento();
+        Long eventoId = evento.getId();
+        String codigo = "" + eventoId;
+        cr.delete(convidado);
+
+        return "redirect:/{codigo}";
     }
 
 }

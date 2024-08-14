@@ -30,7 +30,7 @@ public class Evento implements Serializable {
     private String horario;
 
     @OneToMany
-    private List<Convidado> convidado;
+    private List<Convidado> convidados;
 
     public Long getId() {
         return id;
@@ -70,6 +70,14 @@ public class Evento implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Convidado> getConvidados() {
+        return convidados;
+    }
+
+    public void setConvidado(List<Convidado> convidados) {
+        this.convidados = convidados;
     }
 
     @Override

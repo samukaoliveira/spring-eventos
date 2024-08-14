@@ -35,25 +35,37 @@
             </tr>
         </table>
     </div>
-    <div id="row convidados">
-        <form method="post">
-            <input type="text" value="" name="nomeConvidado">
-            <input type="text" value="" name="rg">
-            <button type="submit" class="btn btn-success">Adicionar convidado</button>
+    <hr class="bold m-4"/>
+    <div id="row convidados justify-content-center">
+        <form method="post" class=" col-8 offset-2">
+            <div>
+                <label class="col-6 form-label">Nome do convidado:</label>
+                <label class="col-3 form-label">RG:</label>
+            </div>
+            <div>
+                <input type="text" value="" name="nomeConvidado" class="col-6 form-input">
+                <input type="text" value="" name="rg" class="col-2 form-input">
+                <button type="submit" class="btn btn-success col-3">Adicionar convidado</button>
+            </div>
         </form>
     </div>
-    <div th:each="convidado : ${evento.convidados}" class="row">
-
-
-        <div class="row">
-            <table class="ustify-content-center table-striped container table-bordered mt-3">
-                <tr>
-                    <td class="col-2"><span th:text="${convidado.nomeConvidado}"></span></td>
-                    <td class="col-2 text-center"><span th:text="${convidado.rg}"></span></td>
-                </tr>
-            </table>
+    <table class="table justify-content-center table-striped table-border container mt-3 col-8">
+            <tr>
+                <th class="col-4"><span>Nome</span></th>
+                <th class="col-2 text-center"><span>RG</span></th>
+                <th colspan="3" class="col-5 text-center"><span>Ações</span></th>
+            </tr>
+        <div th:each="convidado : ${convidados}" class="row">
+            <tr>
+                <td class="col-4"><span th:text="${convidado.nomeConvidado}"></span></td>
+                <td class="col-2 text-center"><span th:text="${convidado.rg}"></span></td>
+<!--                <td class="col-2 text-center"><a th:href="@{/editConvidado/{eventoId}/{convidadoRg}(eventoId=${evento.id}, convidadoRg=${convidado.rg})}"><span>Editar</span></a></td>-->
+                <td class="col-2 text-center"><a th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}" onclick="return confirm('Tem certeza que deseja deletar este evento?')">
+                    <span>Excluir</span></a></td>
+            </tr>
         </div>
-    </div>
+    </table>
+</div>
 </div>
 </body>
 </html>
