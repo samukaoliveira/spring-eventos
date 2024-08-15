@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main.html}">
+<body>
+<h1 th:fragment="titulo">Login</h1>
+<div th:fragment="content">
+    <div class="row justify-content-center">
+        <div id ="login" class="col-4 offset-4 card shadow p-4 m-4">
+            <form method="post" action="/logar">
+                <div id="login_nome" class="mt-2">
+                    <label for="login_nome" class="d-flex">Usuário:</label>
+                    <input type="text" name="username" value="">
+                </div>
+                <div id="login_senha" class="mt-2">
+                    <label for="login_nome" class="d-flex">Senha:</label>
+                    <input type="password" name="password" value="">
+                </div>
+                <div id="submit" class="mt-2">
+                    <p>Esqueci a senha</p>
+                    <button type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
