@@ -6,14 +6,14 @@
 <div th:fragment="content">
     <div class="row justify-content-center">
         <div id ="login" class="col-4 offset-4 card shadow p-4 m-4">
-            <form method="post" action="/logar">
+            <form method="post" action="/login">
                 <div id="login_nome" class="mt-2">
-                    <label for="login_nome" class="d-flex">Usuário:</label>
-                    <input type="text" name="username" value="">
+                    <label for="username" class="d-flex">Usuário:</label>
+                    <input type="text" id="username" name="username" value="">
                 </div>
                 <div id="login_senha" class="mt-2">
-                    <label for="login_nome" class="d-flex">Senha:</label>
-                    <input type="password" name="password" value="">
+                    <label for="password" class="d-flex">Senha:</label>
+                    <input type="password" id="password" name="password" value="">
                 </div>
                 <div id="submit" class="mt-2">
                     <p>Esqueci a senha</p>
